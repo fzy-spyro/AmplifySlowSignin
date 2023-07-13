@@ -10,6 +10,11 @@
       "StackName": "amplify-amplifyslowsignin-dev-140243",
       "StackId": "arn:aws:cloudformation:us-west-2:676488953296:stack/amplify-amplifyslowsignin-dev-140243/2e5f45b0-2175-11ee-a7e5-069c2a3b17c7",
       "AmplifyAppId": "d20z0vumofps31"
+    },
+    "categories": {
+      "auth": {
+        "amplifyslowsigninf345d33f": {}
+      }
     }
   }
 }
