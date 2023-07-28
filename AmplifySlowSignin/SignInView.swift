@@ -13,10 +13,10 @@ class SignInViewModel: ObservableObject {
 
     func signIn() async throws {
         print("⏰ \(#function) clicked!")
-        let duration = try await ContinuousClock().measure {
-            let result = try await Amplify.Auth.signIn(username: email, password: password, options: nil)
-            print("Signin result: \(result)")
-        }
+        let start = Date().timeIntervalSinceReferenceDate
+        let result = try await Amplify.Auth.signIn(username: email, password: password, options: nil)
+        print("Signin result: \(result)")
+        let duration = Date().timeIntervalSinceReferenceDate - start
         print("⏰ \(#function) finished!", duration)
     }
 
