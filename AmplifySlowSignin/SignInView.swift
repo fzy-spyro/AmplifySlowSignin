@@ -11,53 +11,50 @@ class SignInViewModel: ObservableObject {
 
     @Published var showSignUpSheet = false
 
-    func signIn() async throws {
+    func signIn() {
         print("⏰ \(#function) clicked!")
-        let duration = try await ContinuousClock().measure {
-            let result = try await Amplify.Auth.signIn(username: email, password: password, options: nil)
+        let start = Date().timeIntervalSinceReferenceDate
+
+        Amplify.Auth.signIn(username: email, password: password, options: nil) { result in
             print("Signin result: \(result)")
+            let duration = Date().timeIntervalSinceReferenceDate - start
+            print("⏰ \(#function) finished!", duration)
         }
-        print("⏰ \(#function) finished!", duration)
+
     }
 
-    func signUp() async throws {
+    func signUp() {
         let userAttributes = [AuthUserAttribute(.email, value: email)]
         let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
-        do {
-            let signUpResult = try await Amplify.Auth.signUp(
-                username: email,
-                password: password,
-                options: options
-            )
-            if case let .confirmUser(deliveryDetails, _, userId) = signUpResult.nextStep {
-                print("Delivery details \(String(describing: deliveryDetails)) for userId: \(String(describing: userId))")
-            } else {
-                print("SignUp Complete")
+
+        Amplify.Auth.signUp(username: email, password: password, options: options) { result in
+            switch result {
+            case .success(let signUpResult):
+                if case let .confirmUser(deliveryDetails, _) = signUpResult.nextStep {
+                    print("Delivery details \(String(describing: deliveryDetails))")
+                } else {
+                    print("SignUp Complete")
+                }
+            case .failure(let error):
+                print("An error occurred while registering a user \(error)")
             }
-        } catch let error as AuthError {
-            print("An error occurred while registering a user \(error)")
-        } catch {
-            print("Unexpected error: \(error)")
         }
     }
 
-    func confirmUser() async throws {
-        do {
-            let result = try await Amplify.Auth.confirmSignUp(for: email, confirmationCode: otpCode)
-
-            if case .done = result.nextStep {
-                print("Confirmed!")
-                showSignUpSheet = false
-            } else {
-                print("Unexpected result: \(result)")
+    func confirmUser() {
+        Amplify.Auth.confirmSignUp(for: email, confirmationCode: otpCode) { [weak self] result in
+            switch result {
+            case .success(let authResult):
+                if case .done = authResult.nextStep {
+                    print("Confirmed!")
+                    self?.showSignUpSheet = false
+                } else {
+                    print("Unexpected result: \(result)")
+                }
+            case .failure(let error):
+                print("An error occurred while sonfirming a user \(error)")
             }
-
-        } catch let error as AuthError {
-            print("An error occurred while sonfirming a user \(error)")
-        } catch {
-            print("Unexpected error: \(error)")
         }
-
     }
 }
 
@@ -87,13 +84,7 @@ struct SignInView: View {
                 .padding(.bottom, 8)
 
                 Button("Sign in!") {
-                    Task {
-                        do {
-                            try await viewModel.signIn()
-                        } catch {
-                            print("Error signing in: \(error)")
-                        }
-                    }
+                    viewModel.signIn()
                 }
             }
 

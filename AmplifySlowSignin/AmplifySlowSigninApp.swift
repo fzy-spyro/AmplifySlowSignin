@@ -14,15 +14,15 @@ class AppViewModel: ObservableObject {
         authToken = Amplify.Hub.publisher(for: .auth)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] payload in
-            switch payload.eventName {
-            case HubPayload.EventName.Auth.signedIn:
-                self?.isSignedIn = true
-            case HubPayload.EventName.Auth.signedOut:
-                self?.isSignedIn = false
-            default:
-                break
+                switch payload.eventName {
+                case HubPayload.EventName.Auth.signedIn:
+                    self?.isSignedIn = true
+                case HubPayload.EventName.Auth.signedOut:
+                    self?.isSignedIn = false
+                default:
+                    break
+                }
             }
-        }
     }
 
     deinit {
@@ -30,12 +30,20 @@ class AppViewModel: ObservableObject {
         authToken = nil
     }
 
-    @MainActor
-    func checkCurrentAuthSession() async throws {
-        let session = try await Amplify.Auth.fetchAuthSession()
-        print("Is user signed in - \(session.isSignedIn)")
-        isSignedIn = session.isSignedIn
+    func checkCurrentAuthSession() {
+        _ = Amplify.Auth.fetchAuthSession {[weak self] result in
+            switch result {
+            case .success(let session):
+                print("Is user signed in - \(session.isSignedIn)")
+                DispatchQueue.main.async {
+                    self?.isSignedIn = session.isSignedIn
+                }
+            case .failure(let error):
+                print("Fetch session failed with error \(error)")
+            }
+        }
     }
+
 }
 
 @main
@@ -53,11 +61,7 @@ struct AmplifySlowSigninApp: App {
                 }
             }
             .task {
-                do {
-                    try await viewModel.checkCurrentAuthSession()
-                } catch {
-                    print("Error when checking session: \(error)")
-                }
+                viewModel.checkCurrentAuthSession()
             }
         }
     }

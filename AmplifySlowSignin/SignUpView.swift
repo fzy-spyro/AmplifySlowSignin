@@ -30,13 +30,7 @@ struct SignUpView: View {
                     .padding(.bottom, 8)
 
                     Button("Request OTP code!") {
-                        Task {
-                            do {
-                                try await viewModel.signUp()
-                            } catch {
-                                print("Error requesting otp: \(error)")
-                            }
-                        }
+                        viewModel.signUp()
                     }
                 }
 
@@ -50,22 +44,10 @@ struct SignUpView: View {
                     .padding(.bottom, 8)
 
                     Button("Confirm!") {
-                        Task {
-                            do {
-                                try await viewModel.confirmUser()
-                            } catch {
-                                print("Error confirming: \(error)")
-                            }
-                        }
+                        viewModel.confirmUser()
                     }
                 }
             }
         }
-    }
-}
-
-struct SignInView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignInView()
     }
 }

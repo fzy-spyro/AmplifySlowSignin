@@ -19,31 +19,21 @@ struct ContentView: View {
             }
 
             Button("Sign out") {
-                Task {
-                    await Amplify.Auth.signOut()
+                Amplify.Auth.signOut() {
+                    print("Signout result: \($0)")
                 }
             }
         }
         .padding()
         .task {
-            do {
-                try await greetUser()
-            } catch {
-                print("error fetching user details: \(error)")
-            }
+            greetUser()
         }
     }
 
     @MainActor
-    func greetUser() async throws {
-        let user = try await Amplify.Auth.getCurrentUser()
-        username = user.username
+    func greetUser(){
+        let user = Amplify.Auth.getCurrentUser()
+        username = user?.username ?? "Unknown"
     }
     
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
 }
