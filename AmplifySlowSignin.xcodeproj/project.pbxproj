@@ -8,21 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		00B8527234AA2D03E7CEAA69 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = BC9B99A670463CF961BA7267 /* amplifyconfiguration.json */; };
+		4632B3072A73DBEB00D2CF7F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4632B3062A73DBEB00D2CF7F /* SignUpView.swift */; };
 		46861D282A601D3E0006263B /* AmplifySlowSigninApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46861D272A601D3E0006263B /* AmplifySlowSigninApp.swift */; };
 		46861D2A2A601D3E0006263B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46861D292A601D3E0006263B /* ContentView.swift */; };
 		46861D2C2A601D420006263B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46861D2B2A601D420006263B /* Assets.xcassets */; };
 		46861D2F2A601D420006263B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46861D2E2A601D420006263B /* Preview Assets.xcassets */; };
+		46861D372A602A3E0006263B /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 46861D362A602A3E0006263B /* AWSAPIPlugin */; };
+		46861D392A602A3E0006263B /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 46861D382A602A3E0006263B /* AWSCognitoAuthPlugin */; };
+		46861D3B2A602A3E0006263B /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 46861D3A2A602A3E0006263B /* AWSDataStorePlugin */; };
+		46861D3D2A602A3E0006263B /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 46861D3C2A602A3E0006263B /* AWSPluginsCore */; };
+		46861D3F2A602A3E0006263B /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 46861D3E2A602A3E0006263B /* Amplify */; };
+		46861D412A602C9B0006263B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46861D402A602C9B0006263B /* SignInView.swift */; };
 		4CD08B895F8A7E99F9F1D7A0 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 552BE96075EEE2253663C3CF /* awsconfiguration.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4632B3062A73DBEB00D2CF7F /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		46861D242A601D3E0006263B /* AmplifySlowSignin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmplifySlowSignin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46861D272A601D3E0006263B /* AmplifySlowSigninApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifySlowSigninApp.swift; sourceTree = "<group>"; };
 		46861D292A601D3E0006263B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		46861D2B2A601D420006263B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46861D2E2A601D420006263B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		552BE96075EEE2253663C3CF /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; lastKnownFileType = text.json; name = awsconfiguration.json; path = awsconfiguration.json; sourceTree = "<group>"; };
-		BC9B99A670463CF961BA7267 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; lastKnownFileType = text.json; name = amplifyconfiguration.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		46861D402A602C9B0006263B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		552BE96075EEE2253663C3CF /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		BC9B99A670463CF961BA7267 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +39,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46861D3D2A602A3E0006263B /* AWSPluginsCore in Frameworks */,
+				46861D3F2A602A3E0006263B /* Amplify in Frameworks */,
+				46861D3B2A602A3E0006263B /* AWSDataStorePlugin in Frameworks */,
+				46861D372A602A3E0006263B /* AWSAPIPlugin in Frameworks */,
+				46861D392A602A3E0006263B /* AWSCognitoAuthPlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,8 +72,10 @@
 			children = (
 				46861D272A601D3E0006263B /* AmplifySlowSigninApp.swift */,
 				46861D292A601D3E0006263B /* ContentView.swift */,
+				46861D402A602C9B0006263B /* SignInView.swift */,
 				46861D2B2A601D420006263B /* Assets.xcassets */,
 				46861D2D2A601D420006263B /* Preview Content */,
+				4632B3062A73DBEB00D2CF7F /* SignUpView.swift */,
 			);
 			path = AmplifySlowSignin;
 			sourceTree = "<group>";
@@ -97,6 +113,13 @@
 			dependencies = (
 			);
 			name = AmplifySlowSignin;
+			packageProductDependencies = (
+				46861D362A602A3E0006263B /* AWSAPIPlugin */,
+				46861D382A602A3E0006263B /* AWSCognitoAuthPlugin */,
+				46861D3A2A602A3E0006263B /* AWSDataStorePlugin */,
+				46861D3C2A602A3E0006263B /* AWSPluginsCore */,
+				46861D3E2A602A3E0006263B /* Amplify */,
+			);
 			productName = AmplifySlowSignin;
 			productReference = 46861D242A601D3E0006263B /* AmplifySlowSignin.app */;
 			productType = "com.apple.product-type.application";
@@ -125,6 +148,9 @@
 				Base,
 			);
 			mainGroup = 46861D1B2A601D3D0006263B;
+			packageReferences = (
+				46861D352A602A3E0006263B /* XCRemoteSwiftPackageReference "amplify-swift" */,
+			);
 			productRefGroup = 46861D252A601D3E0006263B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -153,6 +179,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4632B3072A73DBEB00D2CF7F /* SignUpView.swift in Sources */,
+				46861D412A602C9B0006263B /* SignInView.swift in Sources */,
 				46861D2A2A601D3E0006263B /* ContentView.swift in Sources */,
 				46861D282A601D3E0006263B /* AmplifySlowSigninApp.swift in Sources */,
 			);
@@ -353,6 +381,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		46861D352A602A3E0006263B /* XCRemoteSwiftPackageReference "amplify-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		46861D362A602A3E0006263B /* AWSAPIPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46861D352A602A3E0006263B /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSAPIPlugin;
+		};
+		46861D382A602A3E0006263B /* AWSCognitoAuthPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46861D352A602A3E0006263B /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSCognitoAuthPlugin;
+		};
+		46861D3A2A602A3E0006263B /* AWSDataStorePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46861D352A602A3E0006263B /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSDataStorePlugin;
+		};
+		46861D3C2A602A3E0006263B /* AWSPluginsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46861D352A602A3E0006263B /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSPluginsCore;
+		};
+		46861D3E2A602A3E0006263B /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46861D352A602A3E0006263B /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = Amplify;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 46861D1C2A601D3D0006263B /* Project object */;
 }
